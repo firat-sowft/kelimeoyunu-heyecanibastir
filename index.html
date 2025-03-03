@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelime Oyunu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="notification" class="hidden"></div>
+    <div id="splash-screen">
+        <img src="cover.jpg" alt="Kelime Oyunu Kapak">
+    </div>
+
+    <div id="login-page" class="hidden">
+        <h1>Kelime Oyunu</h1>
+        <div class="form-container">
+            <input type="email" id="login-email" placeholder="E-posta">
+            <input type="password" id="login-password" placeholder="Şifre">
+            <a href="#" id="forgot-password">Şifremi Unuttum</a>
+            <div class="button-group">
+                <button id="login-btn">Giriş Yap</button>
+                <button id="register-btn">Hesap Oluştur</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="register-page" class="hidden">
+        <h1>Kelime Oyunu</h1>
+        <div class="form-container">
+            <div class="input-row">
+                <input type="text" id="register-name" placeholder="Ad">
+                <input type="text" id="register-surname" placeholder="Soyad">
+            </div>
+            <div class="input-row">
+                <input type="email" id="register-email" placeholder="E-posta">
+                <button id="send-code-register">Doğrulama Kodu Gönder</button>
+            </div>
+            <div id="verification-section-register" class="hidden">
+                <input type="text" id="verification-code-register" placeholder="Doğrulama Kodu">
+                <input type="password" id="register-password" placeholder="Şifre">
+                <input type="password" id="register-password-confirm" placeholder="Şifre Tekrar">
+                <button id="save-register">Kaydet</button>
+            </div>
+            <button id="back-to-login">Geri</button>
+        </div>
+    </div>
+
+    <div id="forgot-password-page" class="hidden">
+        <h1>Kelime Oyunu</h1>
+        <div class="form-container">
+            <div class="input-row">
+                <input type="email" id="forgot-email" placeholder="E-posta">
+                <button id="send-code-forgot">Doğrulama Kodu Gönder</button>
+            </div>
+            <div id="verification-section-forgot" class="hidden">
+                <input type="text" id="verification-code-forgot" placeholder="Doğrulama Kodu">
+                <input type="password" id="new-password" placeholder="Yeni Şifre">
+                <input type="password" id="new-password-confirm" placeholder="Yeni Şifre Tekrar">
+                <button id="change-password">Şifreyi Değiştir</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelime Oyunu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Kelime Oyunu</h1>
+        <p id="user-info"></p>
+        <button id="start-game">Oyuna Başla</button>
+        <button id="logout">Hesaptan Çık</button>
+    </div>
+    <div id="game-container" class="hidden">
+        <div class="container">
+            <h1>Kelime Oyunu</h1>
+            <div class="game-header">
+                <div class="timer">Kalan Süre: <span id="time">04:00</span></div>
+                <div class="score">Puan: <span id="score">0</span></div>
+            </div>
+            <div class="game-area">
+                <div class="word-boxes">
+                    <!-- Kutular JavaScript ile oluşturulacak -->
+                </div>
+                <div class="hint-box">
+                    <p id="hint"></p>
+                </div>
+                <div class="button-group">
+                    <button id="get-letter-btn">Harf Al</button>
+                    <button id="challenge-btn" class="challenge-btn">30</button>
+                </div>
+                <p id="result-message"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                document.getElementById('user-info').textContent = `${user.name} ${user.surname}`;
+            } else {
+                window.location.href = 'index.html';
+            }
+
+            document.getElementById('logout').addEventListener('click', () => {
+                localStorage.removeItem('user');
+                window.location.href = 'index.html';
+            });
+
+            document.getElementById('start-game').addEventListener('click', () => {
+                document.querySelector('.form-container').classList.add('hidden');
+                document.getElementById('game-container').classList.remove('hidden');
+                initializeGame();
+            });
+        });
+    </script>
+    <script src="game.js"></script>
+</body>
+</html>
