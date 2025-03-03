@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://kelimeoyunu-heyecanibastir-production.up.railway.app';
+    const API_URL = 'https://kelimeoyunu-heyecanibastir-production.up.railway.app';
 
     // Splash screen'i 3 saniye sonra gizle
     setTimeout(() => {
