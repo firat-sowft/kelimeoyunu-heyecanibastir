@@ -249,6 +249,10 @@ def delete_word(word_id):
     except Exception as e:
         return json_response({'error': str(e)}, 500)
 
+@app.route('/')
+def health_check():
+    return json_response({'status': 'healthy'}, 200)
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port, debug=False)

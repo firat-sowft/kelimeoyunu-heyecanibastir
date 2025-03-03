@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://kelimeoyunu-heyecanibastir-production.up.railway.app';
+
     // Splash screen'i 3 saniye sonra gizle
     setTimeout(() => {
         document.getElementById('splash-screen').classList.add('hidden');
@@ -74,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('send-code-register').addEventListener('click', async () => {
         const email = document.getElementById('register-email').value;
         console.log(`Sending verification code to ${email}`);
-        const response = await fetch('http://localhost:5000/send-verification', {
+        const response = await fetch(`${API_URL}/send-verification`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -94,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('send-code-forgot').addEventListener('click', async () => {
         const email = document.getElementById('forgot-email').value;
         console.log(`Sending verification code to ${email}`);
-        const response = await fetch('http://localhost:5000/send-verification', {
+        const response = await fetch(`${API_URL}/send-verification`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -126,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const response = await fetch('http://localhost:5000/register', {
+        const response = await fetch(`${API_URL}/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -149,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const verificationCode = document.getElementById('verification-code-forgot').value;
         const newPassword = document.getElementById('new-password').value;
 
-        const response = await fetch('http://localhost:5000/reset-password', {
+        const response = await fetch(`${API_URL}/reset-password`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -220,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Normal kullanıcı girişi için mevcut kod
-        const response = await fetch('http://localhost:5000/login', {
+        const response = await fetch(`${API_URL}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -290,7 +292,7 @@ window.deleteWord = function(wordId) {
 
 window.confirmDelete = async function(wordId) {
     try {
-        const response = await fetch(`http://localhost:5000/words/${wordId}`, {
+        const response = await fetch(`${API_URL}/words/${wordId}`, {
             method: 'DELETE'
         });
 
@@ -309,7 +311,7 @@ window.confirmDelete = async function(wordId) {
 
 async function loadWords() {
     try {
-        const response = await fetch('http://localhost:5000/words/all');
+        const response = await fetch(`${API_URL}/words/all`);
         const data = await response.json();
         displayWords(data.words);
     } catch (error) {
@@ -378,7 +380,7 @@ async function saveEdit(wordId) {
     }
 
     try {
-        const response = await fetch(`http://localhost:5000/words/${wordId}`, {
+        const response = await fetch(`${API_URL}/words/${wordId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -410,7 +412,7 @@ async function addNewWord() {
     }
 
     try {
-        const response = await fetch('http://localhost:5000/words', {
+        const response = await fetch(`${API_URL}/words`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
